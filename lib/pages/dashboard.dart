@@ -35,8 +35,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(body: Obx(() => _buildList())),
+    return WillPopScope(
+      onWillPop: () => Future.value(false),
+      child: SafeArea(
+        child: Scaffold(body: Obx(() => _buildList())),
+      ),
     );
   }
 
