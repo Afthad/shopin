@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:shopin/controller/notification_controller.dart';
 import 'package:shopin/controller/order_controller.dart';
 import 'package:shopin/models/cart.dart';
 import 'package:shopin/pages/dashboard.dart';
@@ -20,6 +21,10 @@ class SuccessScreen extends StatefulWidget {
 class _SuccessScreenState extends State<SuccessScreen> {
   @override
   void initState() {
+    NotificationController.showNotification(
+        id: 0,
+        title: 'Order Success',
+        body: widget.products.map((e) => e.products!.title).toString());
     sendEmail().then((value) => print(value));
     super.initState();
   }
